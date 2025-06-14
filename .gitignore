@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 .httr-oauth
 .Rdata
@@ -55,3 +56,9 @@ try*
 lorem.bib
 apa.csl
 *.pptx
+=======
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+>>>>>>> 42cd31b503375b204c5bd3aa0b8dd1e220f9a8bc
