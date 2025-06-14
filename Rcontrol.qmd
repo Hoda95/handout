@@ -96,48 +96,155 @@ format:
 echo: true
 ---
 
-**R** is a widely used language for statistical analysis, data manipulation, and visualization. One of its most powerful features is the ability to automate decisions and repetitive tasks through control flow statements, such as if, else, for, while, and repeat. These statements act like logic gates in a program, directing how and when different parts of the code are executed, based on specific conditions or data values. This approach allows R scripts to efficiently manage various types of data, respond to unexpected situations like missing values, and repeat processes without manual effort, making analysis more robust and scalable 
+<!-- The introduction should not have a level-1 heading such as Introduction. -->
 
+**R** is a popular language for statistical analysis, data manipulation, and visualization. One of its key strengths lies in its ability to automate tasks and decision-making processes through the use of control flow statements, such as if, else, for, while, and repeat. These control flow statements act as the logic gates of a program, directing the execution path based on specific conditions or data values. This allows R scripts to handle various types of data, respond to unexpected situations (like missing or unusual values), and efficiently repeat processes without manual intervention. By incorporating control flow statements, programmers can make their code more dynamic, efficient, and capable of adapting to different analytical requirements and datasets . This flexibility is essential for robust data analysis and building scalable data processing pipelines in R.
+
+[@kabacoff2022r]
 
 **What Are Control Flow Statements in R?**
 
-Control flow statements in R work much like traffic signals, determining which sections of code should run, depending on the data or situation. By using these statements, programs can automatically make decisions, choose different paths of analysis, and repeat tasks as needed. This makes R code not only dynamic and efficient but also reliable, even when faced with real-world data challenges 
-
+Control flow statements in R act much like traffic signals in a city—they control which parts of your code are allowed to execute and when, based on the current state of your data or specific conditions. By using these statements, R programs can make decisions automatically, such as choosing different analysis paths depending on data values. They also allow for repeated actions, like processing every item in a dataset, without requiring manual input each time. Additionally, control flow statements make your code more robust by providing ways to handle unexpected situations, such as missing or unusual data, ensuring that your scripts remain accurate and reliable even when faced with real-world data challenges [@kabacoff2022r].
 
 **Types of Control Flow Statements**
 
+1- If, Else If, and Else Statements
 
-1- If, Else If, and Else Statements:
+-   If statements execute a block of code only if a specified condition is true.
 
-**If** statements execute a block of code only if a specified condition is true.
+**Example:**
 
-**Else** statements execute **if** the if condition is false.
+```{r}
+#| echo: false
+x <- 10
 
-**Else if** statements check further conditions if the previous ones are not met.
+if (x > 5) {
+  print("x is greater than 5")
+}
 
-2- Repeat Loops:
+```
 
-Repeat loops execute a block of code multiple times until a certain condition is met, using a break statement to stop the loop.
+This code will print “x is greater than 5” because the condition is true.
 
-3- While Loops:
+-   Else statements execute when the condition in the if statement is false.
 
-While loops continue to run as long as a specific condition remains true, making them useful for processing unknown or varying amounts of data.
+**Example:**
 
-4- For Loops:
+```{r}
+#| echo: false
+x <- 3
 
-For loops repeat a block of code a set number of times, usually once for each value in a vector or list, making them ideal for systematic, repeated tasks.
+if (x > 5) {
+  print("x is greater than 5")
+} else {
+  print("x is not greater than 5")
+}
+
+```
+
+This code will print “x is not greater than 5” because the condition is false and the else block runs.
+
+-   Else If statements check additional conditions if the previous conditions were false.
+
+**Example:**
+
+```{r}
+#| echo: false
+x <- 5
+
+if (x > 5) {
+  print("x is greater than 5")
+} else if (x == 5) {
+  print("x is exactly 5")
+} else {
+  print("x is less than 5")
+}
 
 
-**Why Are Control Flow Statements Important?**
+```
 
-Control flow statements are essential for making R scripts flexible, automated, and intelligent. They enable automation in common tasks such as data cleaning, handling missing values, and applying decision rules. This means R can process and analyze data on its own, reducing the need for manual oversight
+This code will print “x is exactly 5” because the first condition is false but the else if condition is true.
+
+2- Repeat Loops
+
+Repeat loops execute a block of code until a specific condition is met, usually ending with a break statement to prevent infinite looping.
+
+[@kabacoff2022r]
+
+**Example:**
+
+```{r}
+#| echo: false
+count <- 1
+
+repeat {
+  print(count)
+  count <- count + 1
+  if (count > 5) {
+    break
+  }
+}
 
 
-**Conclusion**
+```
 
-Control flow statements are the building blocks that transform simple R scripts into dynamic, responsive tools. By using statements like if, else, for, while, and repeat, R users can automate decisions and repetitive processes, making their data analysis workflows more powerful and efficient. This adaptability is crucial for real-world data analysis, where data and requirements often change 
+This code prints numbers 1 to 5. The repeat loop keeps running until the condition inside the loop (count \> 5) becomes true, which triggers the break statement and stops the loop.
+
+[@grolemund2014hands]
+
+3- While Loops
+
+While loops repeat a block of code as long as a certain condition remains true.
+
+**Example:**
+
+```{r}
+#| echo: false
+count <- 1
+
+while (count <= 5) {
+  print(count)
+  count <- count + 1
+}
+
+```
+
+This code also prints numbers 1 to 5. The loop runs as long as the condition (count \<= 5) is true. Once count becomes greater than 5, the loop stops.
+
+[@grolemund2014hands]
+
+4- For Loops
+
+For loops execute a block of code a specific number of times, usually once for each value in a vector.
+
+**Example:**
+
+```{r}
+#| echo: false
+numbers <- c(1, 2, 3, 4, 5)
+
+for (num in numbers) {
+  print(num)
+}
 
 
+```
+
+This code prints each number in the vector numbers, one by one. The loop repeats for every value in the vector.
+
+[@r_core_team2024]
+
+## Why Control Flow Statements Are Important for Automated Decision-Making
+
+Control flow statements make R scripts "think" for themselves, adapting to new data and situations. They allow for automation in data cleaning, handling missing values, and creating decision rules . For example, you can write code that automatically fills in missing values or flags unusual entries—tasks that would otherwise require manual review.
+
+[@kabacoff2022r]
+
+# Conclusion
+
+Control flow statements are fundamental for anyone using R because they turn simple, linear scripts into adaptable and interactive programs. With control flow tools like if, else, for, while, and repeat, R users can build scripts that make their own decisions and handle repetitive tasks automatically. This capability allows the automation of complex data analysis steps—such as checking for outliers, filling in missing data, or running calculations across entire datasets—without manual intervention. As a result, workflows become not only more efficient but also more powerful, since the code can adjust to changing data and requirements on its own . This adaptability is especially valuable in real-world data analysis, where conditions and data structures often change.
+
+[@kabacoff2022r] , [@grolemund2014hands]
 
 # References
 
@@ -171,6 +278,4 @@ Checklist:
 -   [x] A concise description of the successful use of Git and GitHub, as detailed here: <https://github.com/hubchev/make_a_pull_request>.
 -   [x] The link to the presentation and the handout published on GitHub.
 
-\[Hoda Haeri,\] \[06/18/2025,\] \[Köln\]
-
-
+\[Hoda Haeri,\] \[06/18/2025,\] \[Koln\]
